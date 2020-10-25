@@ -150,8 +150,13 @@ class HHO(Metaheuristica):
                     y11 = self.soluciones
                     array_Xm =np.zeros(self.soluciones[indexCond11].shape)
                     array_Xm = array_Xm + Xm
+                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion]}')
+                    print(f'E[indexCond11].shape: {E[indexCond11].shape}')
+                    print(f'np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape: {np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape}')
+                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
+                    print(f'array_Xm.shape: {array_Xm.shape}')
 
-                    y11[indexCond11] = y11[self.idxMejorSolucion]- np.multiply( E[indexCond11], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0])), y11[self.idxMejorSolucion] )- array_Xm ) )  
+                    y11[indexCond11] = y11[self.idxMejorSolucion]-  np.multiply(  E[indexCond11],  np.abs(  np.multiply(  2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0])),  y11[self.idxMejorSolucion]  )- array_Xm ) )
 
                     #ecu 13
                     z11 = y11
