@@ -148,7 +148,7 @@ class HHO(Metaheuristica):
                     indexCond11 = np.intersect1d(np.argwhere(Eabs<0.5),np.argwhere(r<0.5))#Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11
                     #ecu 12
                     y11 = self.soluciones
-                    y11[indexCond11] = y11[self.idxMejorSolucion]- np.multiply( E[indexCond11], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0])), y11[self.idxMejorSolucion] )- Xm ) )  
+                    y11[indexCond11] = y11[self.idxMejorSolucion]- np.multiply( E[indexCond11], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0)), y11[self.idxMejorSolucion] )- Xm ) )  
 
                     #ecu 13
                     z11 = y11
