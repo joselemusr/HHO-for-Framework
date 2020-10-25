@@ -48,6 +48,9 @@ def insertDummyExp(nombreExperimento):
     paramsMH[saltoStr] = 2
     paramsMH["poblacion"] = 40
     paramsMH["numIter"] = 100
+    paramsMH[HHO.NP] = 40
+    paramsMH[HHO.NUM_ITER] = 100
+
     parametros.setParametrosMH(paramsMH)
     paramsAgente = []
     salto = ParametroAgente()
