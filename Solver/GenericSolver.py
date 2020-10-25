@@ -48,6 +48,7 @@ class GenericSolver:
         
         for i in range(self.mh.getParametros()[MH.NUM_ITER]):
             inicio = datetime.now()
+            self.mh.setIteracionActual(self, i)
             self.mh.realizarBusqueda()
             indicadores = self.mh.getIndicadores()
             self.agente.observarIndicadores(indicadores)
