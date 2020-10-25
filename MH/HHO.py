@@ -98,7 +98,10 @@ class HHO(Metaheuristica):
 
         beta=1.5 #Escalar según paper
         sigma=(math.gamma(1+beta)*math.sin(math.pi*beta/2)/(math.gamma((1+beta)/2)*beta*2**((beta-1)/2)))**(1/beta) #Escalar
-        
+        if self.idxMejorSolucion is None:
+            self.idxMejorSolucion = 0
+
+
         if np.min(Eabs) >= 1:
             if np.min(q) >= 0.5: # ecu 1.1
                 indexCond11 = np.intersect1d(np.argwhere(Eabs>=1),np.argwhere(q>=0.5)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 1.1
