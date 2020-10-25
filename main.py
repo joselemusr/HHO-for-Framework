@@ -52,7 +52,7 @@ if __name__ == "__main__":
             
             agente = AgenteFactory.crear(parametros.getNomAgente())
             agente.setParametrosAutonomos(parametros.getParametrosAgente())
-            #agente.setTotIter(mh.getParametros()[MH.NUM_ITER])
+            agente.setTotIter(mh.getParametros()[mh.NUM_ITER])
             solver = GenericSolver()
             solver.setMH(mh)
             solver.setAgente(agente)
