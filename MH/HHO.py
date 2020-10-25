@@ -155,8 +155,8 @@ class HHO(Metaheuristica):
                     array_Xm = array_Xm + Xm
 
                     array_E = np.zeros(self.soluciones[indexCond11].shape)
-                    array_E[0] = E[indexCond11]
-                    array_E[1] = E[indexCond11]
+                    array_E[:,0] = E[indexCond11]
+                    array_E[0,1] = E[indexCond11]
                     print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
                     print(f'E[indexCond11].shape: {E[indexCond11].shape}')
                     print(f'np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape: {np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape}')
