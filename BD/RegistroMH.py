@@ -53,6 +53,14 @@ def insertDummyExp(nombreExperimento):
 
     parametros.setParametrosMH(paramsMH)
     paramsAgente = []
+    np = ParametroAgente()
+    np.setNombre(HHO.NP)
+    np.setTipo(TipoDominio.DISCRETO)
+    np.setMinimo(5)
+    np.setMaximo(100)
+    np.setValorInicial(paramsMH[HHO.NP])
+    np.setComponente(TipoComponente.METAHEURISTICA)
+
     salto = ParametroAgente()
     salto.setNombre(saltoStr)
     salto.setTipo(TipoDominio.CONTINUO)
