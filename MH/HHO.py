@@ -150,17 +150,17 @@ class HHO(Metaheuristica):
                 else: #ecu 11
                     indexCond11 = np.intersect1d(np.argwhere(Eabs<0.5),np.argwhere(r<0.5))#Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11
                     #ecu 12
+                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
+                    print(f'E[indexCond11].shape: {E[indexCond11].shape}')
+                    print(f'np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape: {np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape}')
+                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
+                    print(f'array_Xm.shape: {array_Xm.shape}')
                     y11 = self.soluciones
                     array_Xm = np.zeros(self.soluciones[indexCond11].shape)
                     array_Xm = array_Xm + Xm
 
                     array_E = np.zeros(self.soluciones[indexCond11].shape)
                     array_E = array_E + E[indexCond11]
-                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
-                    print(f'E[indexCond11].shape: {E[indexCond11].shape}')
-                    print(f'np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape: {np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]).shape}')
-                    print(f'y11[self.idxMejorSolucion].shape: {y11[self.idxMejorSolucion].shape}')
-                    print(f'array_Xm.shape: {array_Xm.shape}')
 
                     y11[indexCond11] = y11[self.idxMejorSolucion]-  np.multiply(  array_E,  np.abs(  np.multiply(  2*(1-np.random.uniform(low= 0.0, high=1.0, size=self.soluciones[indexCond11].shape)),  y11[self.idxMejorSolucion]  )- array_Xm ) )
 
@@ -168,6 +168,7 @@ class HHO(Metaheuristica):
                     z11 = y11
                     S = np.random.uniform(low= 0.0, high=1.0, size=(y11.shape))
                     LF = np.divide((0.01 * np.random.uniform(low= 0.0, high=1.0, size=(y11.shape)) * sigma),np.power(np.abs(np.random.uniform(low= 0.0, high=1.0, size=(y11.shape))),(1/beta)))
+                    print(f'LF: {LF}')
                     z11[indexCond11] = y11[indexCond11] + S[indexCond11]*LF
 
                     #evaluar fitness de ecu 12 y 13
