@@ -33,7 +33,7 @@ class GenericSolver:
         assert self.mh is not None, "No se ha iniciado la MH"
         assert self.agente is not None, "No se ha iniciado el Agente"
 
-        self.mh.generarPoblacion(self.mh.getParametros()[mh.NP])
+        self.mh.generarPoblacion(self.mh.getParametros()[HHO.NP])
         resultadosIter = []
         fitness = []
         mejora = []
