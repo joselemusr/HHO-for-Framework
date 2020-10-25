@@ -83,6 +83,8 @@ class HHO(Metaheuristica):
         #X[i,:]=numpy.clip(X[i,:], lb, ub)
 
         E0 = np.random.uniform(low=-1.0,high=1.0,size=self.soluciones.shape[0]) #vector de tam Pob
+        print(f'self.IteracionActual: {self.IteracionActual}')
+        print(f'self.getParametros()[HHO.NUM_ITER]: {self.getParametros()[HHO.NUM_ITER]}')
         E = 2 * E0 * (1-(self.IteracionActual/self.getParametros()[HHO.NUM_ITER])) #vector de tam Pob
         Eabs = np.abs(E)
         
