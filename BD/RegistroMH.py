@@ -15,11 +15,16 @@ from collections import namedtuple
 
 config = configparser.ConfigParser()
 config.read('BD/conf/db_config.ini')
-host = config['postgres']['host']
-db_name = config['postgres']['db_name']
-port = config['postgres']['port']
-user = config['postgres']['user']
-pwd = config['postgres']['pass']
+#host = config['postgres']['host']
+host = '104.198.201.108'
+#db_name = config['postgres']['db_name']
+db_name = 'resultados_mh'
+#port = config['postgres']['port']
+port = 5432
+#user = config['postgres']['user']
+user = 'mh'
+#pwd = config['postgres']['pass']
+pwd = 'mh'
 
 engine = create_engine(f'postgresql://{user}:{pwd}@{host}:{port}/{db_name}')
 
@@ -34,9 +39,8 @@ sqlObtenerExp += "    limit 1) returning id, parametros;"
 def insertDummyExp(nombreExperimento):
     sqlInsert = "INSERT INTO datos_ejecucion(nombre_algoritmo, parametros, estado) VALUES (:nomExp, :param, 'pendiente')"
     parametros = Parametro()
-    parametros.setNomProblema("SCP")
+    parametros.setNomProblema("Esfera")
     #parametros.setInstProblema(paramBD.nomInstProblema)
-    parametros.setInstProblema("Problema/scp/instances/mscp41.txt")
     parametros.setNomMH("HHO")
     parametros.setNomAgente("AgenteGenerico")
     paramsMH = {}
