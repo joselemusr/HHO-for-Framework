@@ -9,6 +9,7 @@ from DTO import EstadoExperimento
 from Agente import AgenteFactory
 from MH.Metaheuristica import Metaheuristica as MH
 import argparse
+from MH.HHO import HHO
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-E", "--experimento", help="Nombre del experimento, almacenado en BD", required=True)
