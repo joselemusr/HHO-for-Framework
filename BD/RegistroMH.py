@@ -4,6 +4,7 @@ from DTO.ParametroAgente import ParametroAgente
 from DTO.ParametroMH import ParametroMH
 from DTO import TipoDominio, TipoComponente
 from MH.PSO import PSO
+from MH.HHO import HHO
 
 from datetime import datetime
 from sqlalchemy import create_engine
@@ -53,14 +54,6 @@ def insertDummyExp(nombreExperimento):
 
     parametros.setParametrosMH(paramsMH)
     paramsAgente = []
-    np = ParametroAgente()
-    np.setNombre(HHO.NP)
-    np.setTipo(TipoDominio.DISCRETO)
-    np.setMinimo(5)
-    np.setMaximo(100)
-    np.setValorInicial(paramsMH[HHO.NP])
-    np.setComponente(TipoComponente.METAHEURISTICA)
-
     salto = ParametroAgente()
     salto.setNombre(saltoStr)
     salto.setTipo(TipoDominio.CONTINUO)
