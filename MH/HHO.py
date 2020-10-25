@@ -101,59 +101,22 @@ class HHO(Metaheuristica):
             if np.min(q) >= 0.5: # ecu 1.1
                 indexCond11 = np.intersect1d(np.argwhere(Eabs>=1),np.argwhere(q>=0.5)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 1.1
                 Xrand = self.soluciones[np.random.randint(low=0, high=self.soluciones.shape[0], size=indexCond11.shape[0])] #Me entrega un conjunto de soluciones rand de tam indexCond11.shape[0] (osea los que cumplen la cond11)
-                self.soluciones[indexCond11] = Xrand - 
-                np.multiply(
-                    np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]),
-                    np.abs(
-                        Xrand-
-                        (2*np.multiply(
-                            np.random.uniform(low= 0.0, high=1.0, size = indexCond11.shape[0]),
-                            self.soluciones[indexCond11]
-                            )
-                            )
-                        )
-                    ) #Aplico la ecu 1.1 solamente a las que cumplen las condiciones np.argwhere(Eabs>=1),np.argwhere(q>=0.5)
+                self.soluciones[indexCond11] = Xrand - np.multiply(np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0]),np.abs(Xrand-(2*np.multiply(np.random.uniform(low= 0.0, high=1.0, size = indexCond11.shape[0]),self.soluciones[indexCond11])))) #Aplico la ecu 1.1 solamente a las que cumplen las condiciones np.argwhere(Eabs>=1),np.argwhere(q>=0.5)
 
             else: # ecu 1.2
                 indexCond12 = np.intersect1d(np.argwhere(Eabs>=1),np.argwhere(q<0.5)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 1.2
                 
-                self.soluciones[indexCond12] = (self.soluciones[self.idxMejorSolucion] - Xm)-
-                np.multiply(
-                    np.random.uniform(low= 0.0, high=1.0, size = indexCond12.shape[0]),
-                    (LB + np.random.uniform(low= 0.0, high=1.0, size = indexCond12.shape[0]) * (UB-LB)) 
-                    )
-                ecu1.2 = (self.idxMejorSolucion - Xm(t)) - np.random.rand()* (LB + np.random.rand()*(LB - UB))
+                self.soluciones[indexCond12] = (self.soluciones[self.idxMejorSolucion] - Xm)- np.multiply( np.random.uniform(low= 0.0, high=1.0, size = indexCond12.shape[0]), (LB + np.random.uniform(low= 0.0, high=1.0, size = indexCond12.shape[0]) * (UB-LB)) )
         else:
             if np.min(Eabs) >= 0.5:
                 if np.min(r) >= 0.5: # ecu 4
                     indexCond4 = np.intersect1d(np.argwhere(Eabs>=0.5),np.argwhere(r>=0.5)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 4
-                    self.soluciones[indexCond4] = 
-                    (self.soluciones[self.idxMejorSolucion] - self.soluciones[indexCond4]) - 
-                    np.multiply(
-                        E[indexCond4],
-                        np.abs(
-                            np.multiply(
-                                2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond4.shape[0])),
-                                self.soluciones[self.idxMejorSolucion]
-                                )-
-                                self.soluciones[indexCond4]
-                            )
-                        )                
+                    self.soluciones[indexCond4] = (self.soluciones[self.idxMejorSolucion] - self.soluciones[indexCond4]) - np.multiply( E[indexCond4], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond4.shape[0])), self.soluciones[self.idxMejorSolucion] )- self.soluciones[indexCond4] ) )                
                 else: #ecu 10
                     indexCond10 = np.intersect1d(np.argwhere(Eabs>=0.5),np.argwhere(r<0.5))#Nos entrega los index de las soluciones a las que debemos aplicar la ecu 10
                     #ecu 7
                     y10 = self.soluciones
-                    y10[indexCond10] = y10[self.idxMejorSolucion]-
-                    np.multiply(
-                        E[indexCond10],
-                        np.abs(
-                            np.multiply(
-                                2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond10.shape[0])),
-                                self.y10[self.idxMejorSolucion]
-                                )-
-                                self.y10[indexCond10]
-                            )
-                        )  
+                    y10[indexCond10] = y10[self.idxMejorSolucion]- np.multiply( E[indexCond10], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond10.shape[0])), y10[self.idxMejorSolucion] )- y10[indexCond10] ) )  
 
                     #ecu 8
                     z10 = y10
@@ -177,31 +140,13 @@ class HHO(Metaheuristica):
             else:
                 if np.min(r) >= 0.5: # ecu 6
                     indexCond6 = np.intersect1d(np.argwhere(Eabs<0.5),np.argwhere(r>=0.5)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 6
-                    self.soluciones[indexCond6] = 
-                    self.soluciones[self.idxMejorSolucion]- 
-                    np.multiply(
-                        E[indexCond6],
-                        np.abs(
-                                self.soluciones[self.idxMejorSolucion]-
-                                self.soluciones[indexCond6]
-                            )
-                        )                
-  
+                    self.soluciones[indexCond6] = self.soluciones[self.idxMejorSolucion]- np.multiply(E[indexCond6], np.abs(self.soluciones[self.idxMejorSolucion] - self.soluciones[indexCond6] ) )
+
                 else: #ecu 11
                     indexCond11 = np.intersect1d(np.argwhere(Eabs<0.5),np.argwhere(r<0.5))#Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11
                     #ecu 12
                     y11 = self.soluciones
-                    y11[indexCond11] = y11[self.idxMejorSolucion]-
-                    np.multiply(
-                        E[indexCond11],
-                        np.abs(
-                            np.multiply(
-                                2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0])),
-                                self.y11[self.idxMejorSolucion]
-                                )-
-                                Xm
-                            )
-                        )  
+                    y11[indexCond11] = y11[self.idxMejorSolucion]- np.multiply( E[indexCond11], np.abs( np.multiply( 2*(1-np.random.uniform(low= 0.0, high=1.0, size=indexCond11.shape[0])), y11[self.idxMejorSolucion] )- Xm ) )  
 
                     #ecu 13
                     z11 = y11
