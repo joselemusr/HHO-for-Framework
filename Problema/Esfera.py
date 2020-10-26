@@ -69,6 +69,8 @@ class Esfera(Problema):
         return soluciones
 
     def evalObj(self, soluciones):
+        if soluciones.shape[0] == 1:
+            return np.sum(np.square(soluciones),axis = 0)    
         return np.sum(np.square(soluciones),axis = 1)
 
     def evaluarFitness(self, soluciones):
