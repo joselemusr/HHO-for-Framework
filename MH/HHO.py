@@ -188,7 +188,7 @@ class HHO(Metaheuristica):
                     self.soluciones[indexCond111] = y11[indexCond111]
 
                     #ecu 11.2
-                    indexCond112 = np.intersect1d(indexCond10, np.argwhere(Fz11 < self.fitnessAnterior)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11.2
+                    indexCond112 = np.intersect1d(indexCond11, np.argwhere(Fz11 < self.fitnessAnterior)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11.2
                     self.soluciones[indexCond112] = z11[indexCond112]
 
     def getIndicadores(self):
