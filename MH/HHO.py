@@ -76,8 +76,8 @@ class HHO(Metaheuristica):
             ,TipoIndicadoresMH.FITNESS_MEJOR_GLOBAL:self.problema.getMejorEvaluacion()
             ,TipoIndicadoresMH.FITNESS_MEJOR_ITERACION:fitness[self.idxMejorSolucion]
             ,TipoIndicadoresMH.FITNESS_PROMEDIO:np.mean(fitness)
+            ,TipoIndicadoresMH.FACTOR_EVOLUTIVO:self.getFactorEvolutivo()
         }
-
     def _perturbarSoluciones(self):
         #Evaluar si "normizar" las soluciones entre valores min y max (-10,10)
         #X[i,:]=numpy.clip(X[i,:], lb, ub)
