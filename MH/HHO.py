@@ -43,11 +43,11 @@ class HHO(Metaheuristica):
         return self.parametros
 
     def realizarBusqueda(self):
-        if self.fitnessAnterior is None: self.fitnessAnterior = fitness
-        self.idxMejorSolucion = self.problema.getMejorIdx(fitness)
         self._perturbarSoluciones()
         fitness = self.problema.evaluarFitness(self.problema.decode(self.soluciones))
         assert self.soluciones.shape[0] == fitness.shape[0], "El numero de fitness es diferente al numero de soluciones"
+        if self.fitnessAnterior is None: self.fitnessAnterior = fitness
+        self.idxMejorSolucion = self.problema.getMejorIdx(fitness)
         self.mejoraPorSol = self.problema.getIndsMejora(self.fitnessAnterior, fitness)
         assert self.soluciones.shape[0] == self.mejoraPorSol.shape[0], "El numero de indices de mejora es diferente al numero de soluciones"
         if self.mejoraPorSolAcumulada is None: self.mejoraPorSolAcumulada = np.zeros((self.soluciones.shape[0]))
@@ -173,6 +173,7 @@ class HHO(Metaheuristica):
                     z11[indexCond11] = y11[indexCond11] + np.multiply(S[indexCond11],LF[[indexCond11]])
 
                     #evaluar fitness de ecu 12 y 13
+                    if self.fitnessAnterior is None: self.fitnessAnterior = np.ones(self.soluciones.shape[0]*999999)
                     Fy11 = self.fitnessAnterior
                     for i in indexCond11:
                         Fy11[i] = self.problema.evaluarFitness(self.problema.decode(y11[i]))
