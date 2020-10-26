@@ -77,7 +77,7 @@ class GenericSolver:
                 
                 RegistroMH.guardaDatosIteracion(resultadosIter)                
                 resultadosIter = []
-            print(f"Mejor fitness {'%.9f'%(self.mh.problema.getMejorEvaluacion())}\tmejora acumulada {'%.3f'%(self.agente.mejoraAcumulada)}\tfactor evolutivo {'%.3f'%(indicadores[TipoIndicadoresMH.FACTOR_EVOLUTIVO])} \thmm {self.agente.states[self.agente.estado]}")
+            print(f"Mejor fitness {'%.9f'%(self.mh.problema.getMejorEvaluacion())}\tmejora acumulada {'%.3f'%(self.agente.mejoraAcumulada)}\tfactor evolutivo {'%.3f'%(indicadores[TipoIndicadoresMH.FACTOR_EVOLUTIVO])}")
             fitness.append(self.mh.problema.getMejorEvaluacion())
             mejora.append(self.agente.mejoraAcumulada)
             facEvol.append(indicadores[TipoIndicadoresMH.FACTOR_EVOLUTIVO])
