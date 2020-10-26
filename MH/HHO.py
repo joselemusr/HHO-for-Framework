@@ -174,9 +174,13 @@ class HHO(Metaheuristica):
 
                     #evaluar fitness de ecu 12 y 13
                     Fy11 = self.fitnessAnterior
-                    Fy11[indexCond11] = self.problema.evaluarFitness(self.problema.decode(y11[indexCond11]))
+                    for i in indexCond11:
+                        Fy11[i] = self.problema.evaluarFitness(self.problema.decode(y11[i]))
+                    #Fy11[indexCond11] = self.problema.evaluarFitness(self.problema.decode(y11[indexCond11]))
                     Fz11 = self.fitnessAnterior
-                    Fz11[indexCond11] = self.problema.evaluarFitness(self.problema.decode(z11[indexCond11]))                    
+                    for i in indexCond11:
+                        Fz11[i] = self.problema.evaluarFitness(self.problema.decode(z11[i]))
+                    #Fz11[indexCond11] = self.problema.evaluarFitness(self.problema.decode(z11[indexCond11]))                    
                     
                     #ecu 11.1
                     indexCond111 = np.intersect1d(indexCond11, np.argwhere(Fy11 < self.fitnessAnterior)) #Nos entrega los index de las soluciones a las que debemos aplicar la ecu 11.1
