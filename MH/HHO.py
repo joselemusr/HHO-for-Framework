@@ -41,7 +41,7 @@ class HHO(Metaheuristica):
     
     def getParametros(self):
         return self.parametros
-        
+
     def getFactorEvolutivo(self):
         if self.idxMejorSolucion is None: return None
         if self.soluciones is None: return None
@@ -61,6 +61,13 @@ class HHO(Metaheuristica):
         if dmax-dmin == 0: return 1
         return (dg-dmin)/(dmax-dmin)
 
+    def calcDistProm(self, idxSol, sols):
+        res = 0
+        for idx in range(len(sols)):
+            if idx == idxSol: continue
+            res += np.sum(np.abs(sols[idx]-sols[idxSol]))
+        return res/len(sols)
+        
     def realizarBusqueda(self):
         self._perturbarSoluciones()
         fitness = self.problema.evaluarFitness(self.problema.decode(self.soluciones))
