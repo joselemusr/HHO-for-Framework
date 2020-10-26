@@ -174,9 +174,6 @@ class HHO(Metaheuristica):
 
                     #evaluar fitness de ecu 12 y 13
                     Fy11 = self.fitnessAnterior
-                    print(f'y11: {y11}')
-                    print(f'y11: {y11[0]}')
-
                     for i in indexCond11:
                         Fy11[i] = self.problema.evaluarFitness(self.problema.decode(y11[i]))
                     #Fy11[indexCond11] = self.problema.evaluarFitness(self.problema.decode(y11[indexCond11]))
