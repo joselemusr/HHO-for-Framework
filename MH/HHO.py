@@ -41,6 +41,25 @@ class HHO(Metaheuristica):
     
     def getParametros(self):
         return self.parametros
+        
+    def getFactorEvolutivo(self):
+        if self.idxMejorSolucion is None: return None
+        if self.soluciones is None: return None
+        dg = self.calcDistProm(self.idxMejorSolucion, self.soluciones)
+        dmax = None
+        dmin = None
+        #print("***")
+        for i in range(self.soluciones.shape[0]):
+            #if i == self.idxMejorSolucion: continue
+            di = self.calcDistProm(i, self.soluciones)
+            #print(di)
+            if dmax is None or di > dmax: dmax = di
+            if dmin is None or di < dmin: dmin = di
+        #print("***")
+        #print(f"{dg-dmin} {dmax-dmin}")
+        if dg-dmin == 0: return 0
+        if dmax-dmin == 0: return 1
+        return (dg-dmin)/(dmax-dmin)
 
     def realizarBusqueda(self):
         self._perturbarSoluciones()
