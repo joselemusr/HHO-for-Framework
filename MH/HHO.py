@@ -170,8 +170,7 @@ class HHO(Metaheuristica):
                     z11 = y11
                     S = np.random.uniform(low= 0.0, high=1.0, size=(y11.shape))
                     LF = np.divide((0.01 * np.random.uniform(low= 0.0, high=1.0, size=(y11.shape)) * sigma),np.power(np.abs(np.random.uniform(low= 0.0, high=1.0, size=(y11.shape))),(1/beta)))
-                    print(f'LF: {LF}')
-                    z11[indexCond11] = y11[indexCond11] + S[indexCond11]*LF
+                    z11[indexCond11] = y11[indexCond11] + np.multiply(S[indexCond11],LF[[indexCond11]])
 
                     #evaluar fitness de ecu 12 y 13
                     Fy11 = self.fitnessAnterior
