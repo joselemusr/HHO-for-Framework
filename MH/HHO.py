@@ -173,7 +173,7 @@ class HHO(Metaheuristica):
                     z11[indexCond11] = y11[indexCond11] + np.multiply(S[indexCond11],LF[[indexCond11]])
 
                     #evaluar fitness de ecu 12 y 13
-                    if self.fitnessAnterior is None: self.fitnessAnterior = np.ones(self.soluciones.shape[0]*999999)
+                    if self.fitnessAnterior is None: self.fitnessAnterior = np.ones(self.soluciones.shape[0])*999999
                     Fy11 = self.fitnessAnterior
                     for i in indexCond11:
                         Fy11[i] = self.problema.evaluarFitness(self.problema.decode(y11[i]))
