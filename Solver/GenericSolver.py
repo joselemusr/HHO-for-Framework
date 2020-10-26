@@ -97,7 +97,7 @@ class GenericSolver:
             
         if len(resultadosIter) > 0:
             RegistroMH.guardaDatosIteracion(resultadosIter)
-        self.agente.guardarTablaQ()
+        #self.agente.guardarTablaQ()
         resultados = Resultado()
         resultados.setFitness(self.mh.problema.getMejorEvaluacion())
         resultados.setMejorSolucion(json.dumps(self.mh.soluciones[self.mh.idxMejorSolucion].tolist()))
