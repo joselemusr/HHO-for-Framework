@@ -178,6 +178,10 @@ class HHO(Metaheuristica):
                     array_Xm = np.zeros(self.soluciones[indexCond11].shape)
                     array_Xm = array_Xm + Xm
 
+                    #*** Cambiar y probar por:
+                    #array_E = np.ones(self.soluciones[indexCond11].shape)
+                    #array_E = array_E[indexCond11]*E[indexCond11]
+
                     array_E = np.zeros(self.soluciones[indexCond11].shape)
                     array_E[:,0] = E[indexCond11]
                     array_E[:,1] = E[indexCond11]
